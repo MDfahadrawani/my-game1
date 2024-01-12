@@ -1,5 +1,5 @@
 var bg,bgImg;
-var player, shooterImg, shooter_shooting,zombie1Img;
+var player, shooterImg, shooter_shooting;
 
 
 function preload(){
@@ -97,20 +97,23 @@ drawSprites();
 function enemy(){
    if(frameCount%50===0){ //giving random x and y positions for zombie to appear 
     zombie = createSprite(random(500,1100),random(100,500),40,40) 
-    zImage = random(1,3)
+    zImage = Math.round(random(1,3))
     if (zImage === 1) {
-    zombie1Img = zombieImg
+      zombie.addImage(zombieImg)
+      zombie.scale = 0.1
     }
-
+    
     else if (zImage === 2) {
-      zombie1Img = zombie2Img
+      zombie.addImage(zombie2Img)
+      zombie.scale = 0.20
     }
 
     else if (zImage === 3) {
-      zombie1Img = zombie3Img
+      zombie.addImage(zombie3Img)
+      zombie.scale = 0.20 
     }
-    zombie.addImage("zombie",zombie1Img)
-    zombie.scale = 0.15 
+     
+    
     zombie.velocityX = -3 
     zombie.debug= true 
     zombie.setCollider("rectangle",0,0,400,400) 
